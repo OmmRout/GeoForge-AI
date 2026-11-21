@@ -1,7 +1,7 @@
 import time
 import math
 import random
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Any
 from app.models.drone import (
     TelemetryFrame, FlightMode, DroneStatus, GPSData, AttitudeData, 
     BatteryData, WeatherTelemetry, Waypoint
