@@ -6,6 +6,7 @@
 [![TailwindCSS](https://img.shields.io/badge/Tailwind-4.0+-38B2AC.svg)](https://tailwindcss.com)
 [![YOLOv8](https://img.shields.io/badge/Computer_Vision-YOLOv8_|_OpenCV-FF6F00.svg)](https://ultralytics.com)
 [![Agentic AI](https://img.shields.io/badge/Agentic_AI-LangGraph_Cognitive_Core-7C3AED.svg)](https://github.com/langchain-ai/langgraph)
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/OmmRout/GeoForge-AI)
 
 **GeoForge AI** is an Agentic AI-powered autonomous drone monitoring platform engineered for extreme, remote, and challenging topography (mountainous ridges, glaciated valleys, border sectors, and landslide/wildfire zones). 
 
