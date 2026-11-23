@@ -8,6 +8,7 @@ from slowapi.errors import RateLimitExceeded
 
 from app.core.config import settings
 from app.core.rate_limiter import limiter
+from app.core.security import SecurityWAFMiddleware
 from app.core.websocket_manager import ws_manager
 from app.api.v1.api_router import api_router
 from app.services.telemetry_simulator import telemetry_simulator
@@ -71,6 +72,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Attach security WAF shield and OWASP headers middleware
+app.add_middleware(SecurityWAFMiddleware)
 
 # Include API v1 router
 app.include_router(api_router, prefix=settings.API_V1_PREFIX)

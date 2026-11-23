@@ -1,13 +1,13 @@
 import time
 from collections import defaultdict
-from fastapi import Request, HTTPException, status
+from fastapi import Request
 from slowapi import Limiter
-from slowapi.util import get_remote_address
+from app.core.security import get_client_ip
 
-# SlowAPI Limiter instance
-limiter = Limiter(key_func=get_remote_address)
+# SlowAPI Limiter instance using real client IP behind reverse proxy (Render / Cloudflare)
+limiter = Limiter(key_func=get_client_ip)
 
-# Fallback lightweight in-memory Token Bucket rate limiter for custom endpoints or websockets
+# In-memory Token Bucket rate limiter for custom endpoints or websockets
 class TokenBucketLimiter:
     def __init__(self, capacity: int = 60, refill_rate: float = 1.0):
         self.capacity = capacity

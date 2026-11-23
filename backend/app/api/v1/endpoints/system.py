@@ -63,3 +63,12 @@ def get_hardware_status(request: Request):
             }
         ]
     }
+
+@router.get("/security")
+@limiter.limit("60/minute")
+def get_security_status(request: Request):
+    """
+    Returns live WAF shield metrics, threat mitigation stats, and active security rules.
+    """
+    from app.core.security import security_tracker
+    return security_tracker.get_status()
