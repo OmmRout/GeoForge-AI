@@ -45,9 +45,9 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
         canvas.height = 360;
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.fillStyle = '#27272A';
+          ctx.fillStyle = '#111814';
           ctx.fillRect(0, 0, 640, 140);
-          ctx.fillStyle = '#3F3F46';
+          ctx.fillStyle = '#27272A';
           ctx.fillRect(0, 140, 640, 220);
         }
         const blob = await new Promise<Blob>((resolve) => canvas.toBlob((b) => resolve(b!), 'image/jpeg'));
@@ -122,17 +122,17 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-sm animate-in fade-in">
-      <div className="tactical-card w-full max-w-4xl max-h-[90vh] rounded-2xl border border-amber-500/40 shadow-2xl flex flex-col overflow-hidden bg-[#0B0C10]">
+      <div className="tactical-card w-full max-w-4xl max-h-[90vh] rounded-2xl border border-teal-500/40 shadow-2xl flex flex-col overflow-hidden bg-[#090D0B]">
         {/* Modal Header */}
-        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[#13151B] border-b border-[#242833]">
+        <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 bg-[#111814] border-b border-[#1E2B24]">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-400">
+            <div className="p-2 rounded-lg bg-teal-500/15 border border-teal-500/40 text-teal-400">
               <Cpu className="w-5 h-5" />
             </div>
             <div>
               <h2 className="text-base font-bold text-zinc-100 flex items-center gap-2">
                 GeoForge YOLOv8 Edge Inference Lab
-                <span className="text-[10px] font-mono-hud px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                <span className="text-[10px] font-mono-hud px-2 py-0.5 rounded bg-teal-500/10 text-teal-300 border border-teal-500/30">
                   DEMO CV MODEL
                 </span>
               </h2>
@@ -144,7 +144,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition cursor-pointer"
+            className="p-1.5 rounded-lg bg-[#090D0B] hover:bg-[#19231D] text-zinc-400 hover:text-white border border-[#1E2B24] transition cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
@@ -153,8 +153,8 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
         {/* Modal Body */}
         <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4">
           {rateLimitNotice && (
-            <div className="p-3 rounded-lg bg-amber-500/20 border border-amber-500/50 text-amber-300 text-xs flex items-center gap-2">
-              <AlertTriangle className="w-4 h-4 text-amber-400 flex-shrink-0" />
+            <div className="p-3 rounded-lg bg-orange-500/20 border border-orange-500/50 text-orange-300 text-xs flex items-center gap-2">
+              <AlertTriangle className="w-4 h-4 text-orange-400 flex-shrink-0" />
               <span>{rateLimitNotice}</span>
             </div>
           )}
@@ -167,7 +167,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
               <button
                 onClick={() => loadScenario('alpine_hiker_distress', 'hiker')}
-                className="p-2.5 rounded-xl bg-[#13151B] hover:bg-zinc-800/80 border border-[#242833] hover:border-amber-500/60 text-left transition cursor-pointer text-xs"
+                className="p-2.5 rounded-xl bg-[#111814] hover:bg-[#19231D] border border-[#1E2B24] hover:border-teal-500/60 text-left transition cursor-pointer text-xs"
               >
                 <div className="font-bold text-zinc-200">Alpine Snow Hiker</div>
                 <div className="text-[11px] text-zinc-400 font-mono-hud">Search & Rescue High Contrast</div>
@@ -175,7 +175,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
               <button
                 onClick={() => loadScenario('scree_slope_landslide', 'landslide')}
-                className="p-2.5 rounded-xl bg-[#13151B] hover:bg-zinc-800/80 border border-[#242833] hover:border-amber-500/60 text-left transition cursor-pointer text-xs"
+                className="p-2.5 rounded-xl bg-[#111814] hover:bg-[#19231D] border border-[#1E2B24] hover:border-orange-500/60 text-left transition cursor-pointer text-xs"
               >
                 <div className="font-bold text-zinc-200">Landslide Escarpment</div>
                 <div className="text-[11px] text-zinc-400 font-mono-hud">Rockfall & Slope Fracture</div>
@@ -183,7 +183,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
               <button
                 onClick={() => loadScenario('forest_fire_hotspot', 'fire')}
-                className="p-2.5 rounded-xl bg-[#13151B] hover:bg-zinc-800/80 border border-[#242833] hover:border-red-500/60 text-left transition cursor-pointer text-xs"
+                className="p-2.5 rounded-xl bg-[#111814] hover:bg-[#19231D] border border-[#1E2B24] hover:border-red-500/60 text-left transition cursor-pointer text-xs"
               >
                 <div className="font-bold text-zinc-200">Ridge Wildfire Hotspot</div>
                 <div className="text-[11px] text-zinc-400 font-mono-hud">Thermal IR Plume Detection</div>
@@ -192,14 +192,14 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
           </div>
 
           {/* Upload or Dropzone */}
-          <div className="relative border-2 border-dashed border-zinc-700 hover:border-amber-500/60 rounded-xl p-4 sm:p-6 text-center bg-[#13151B]/60 transition">
+          <div className="relative border-2 border-dashed border-[#1E2B24] hover:border-teal-500/60 rounded-xl p-4 sm:p-6 text-center bg-[#111814]/60 transition">
             <input
               type="file"
               accept="image/*"
               onChange={handleFileChange}
               className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
             />
-            <UploadCloud className="w-8 h-8 text-amber-400 mx-auto mb-2" />
+            <UploadCloud className="w-8 h-8 text-teal-400 mx-auto mb-2" />
             <div className="text-xs font-semibold text-zinc-200">
               Drag & drop custom aerial imagery, or click to browse
             </div>
@@ -210,7 +210,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
           {/* Image & Bounding Boxes Preview Canvas */}
           {imagePreview && (
-            <div className="relative rounded-xl overflow-hidden border border-[#242833] bg-black min-h-[220px] max-h-[360px] flex items-center justify-center">
+            <div className="relative rounded-xl overflow-hidden border border-[#1E2B24] bg-black min-h-[220px] max-h-[360px] flex items-center justify-center">
               <img
                 src={imagePreview}
                 alt="Analyzed Terrain"
@@ -222,7 +222,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
                 return (
                   <div
                     key={d.id}
-                    className={`absolute border-2 ${isCrit ? 'border-red-500 shadow-md shadow-red-500/60' : 'border-amber-400'}`}
+                    className={`absolute border-2 ${isCrit ? 'border-red-500 shadow-md shadow-red-500/60' : 'border-orange-400'}`}
                     style={{
                       left: `${d.bbox.x_min * 100}%`,
                       top: `${d.bbox.y_min * 100}%`,
@@ -230,7 +230,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
                       height: `${(d.bbox.y_max - d.bbox.y_min) * 100}%`
                     }}
                   >
-                    <div className={`absolute -top-5 left-0 px-1 py-0.5 rounded text-[9px] font-mono-hud font-bold text-white ${isCrit ? 'bg-red-600' : 'bg-amber-600'} whitespace-nowrap`}>
+                    <div className={`absolute -top-5 left-0 px-1 py-0.5 rounded text-[9px] font-mono-hud font-bold text-white ${isCrit ? 'bg-red-600' : 'bg-orange-600'} whitespace-nowrap`}>
                       {d.label} ({(d.confidence * 100).toFixed(0)}%)
                     </div>
                   </div>
@@ -245,7 +245,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
               <button
                 onClick={() => runInference()}
                 disabled={loading}
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-50 text-zinc-950 text-xs font-bold font-mono-hud transition cursor-pointer shadow-lg"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-teal-500 hover:bg-teal-400 disabled:opacity-50 text-zinc-950 text-xs font-bold font-mono-hud transition cursor-pointer shadow-lg"
               >
                 <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
                 <span>{loading ? 'RUNNING YOLO INFERENCE...' : 'RUN DETECTION MODEL'}</span>
@@ -255,7 +255,7 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
           {/* Inference Results Cards */}
           {results && (
-            <div className="space-y-3 pt-2 border-t border-[#242833]">
+            <div className="space-y-3 pt-2 border-t border-[#1E2B24]">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-bold text-zinc-100 flex items-center gap-1.5 font-mono-hud">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
@@ -268,9 +268,9 @@ export const MLTestingModal: React.FC<MLTestingModalProps> = ({ isOpen, onClose 
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {results.detections.map((d) => (
-                  <div key={d.id} className="p-2.5 rounded-lg bg-[#13151B] border border-[#242833] text-xs space-y-1">
+                  <div key={d.id} className="p-2.5 rounded-lg bg-[#111814] border border-[#1E2B24] text-xs space-y-1">
                     <div className="flex items-center justify-between font-mono-hud">
-                      <span className="text-amber-400 font-bold">{d.id}</span>
+                      <span className="text-teal-400 font-bold">{d.id}</span>
                       <span className={`text-[10px] px-1.5 py-0.5 rounded ${getThreatBadgeClass(d.threat_level)}`}>
                         {d.threat_level}
                       </span>

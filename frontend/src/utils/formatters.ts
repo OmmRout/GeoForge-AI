@@ -21,11 +21,11 @@ export function getThreatBadgeClass(level: ThreatSeverity | string): string {
     case 'CRITICAL':
       return 'bg-red-500/20 text-red-400 border-red-500/40 border';
     case 'HIGH':
-      return 'bg-amber-500/20 text-amber-400 border-amber-500/40 border';
+      return 'bg-orange-500/20 text-orange-400 border-orange-500/40 border';
     case 'MEDIUM':
-      return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/40 border';
+      return 'bg-amber-500/20 text-amber-400 border-amber-500/40 border';
     case 'LOW':
-      return 'bg-zinc-700/40 text-zinc-300 border-zinc-600/50 border';
+      return 'bg-teal-500/20 text-teal-300 border-teal-500/40 border';
     case 'NOMINAL':
     default:
       return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40 border';

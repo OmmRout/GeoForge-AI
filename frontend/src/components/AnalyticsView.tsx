@@ -19,7 +19,7 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
         <div className="tactical-card p-3 rounded-xl">
           <div className="flex items-center justify-between text-xs font-mono-hud text-zinc-400">
             <span>TERRAIN ESCARPMENT RISK</span>
-            <ShieldAlert className="w-4 h-4 text-amber-400" />
+            <ShieldAlert className="w-4 h-4 text-orange-400" />
           </div>
           <div className="text-xl font-bold font-mono-hud text-zinc-100 mt-1">
             MODERATE-HIGH (74/100)
@@ -32,9 +32,9 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
         <div className="tactical-card p-3 rounded-xl">
           <div className="flex items-center justify-between text-xs font-mono-hud text-zinc-400">
             <span>MOTOR THRUST EFFICIENCY</span>
-            <Zap className="w-4 h-4 text-amber-400" />
+            <Zap className="w-4 h-4 text-teal-400" />
           </div>
-          <div className="text-xl font-bold font-mono-hud text-amber-300 mt-1">
+          <div className="text-xl font-bold font-mono-hud text-teal-300 mt-1">
             91.4% OPTIMAL
           </div>
           <div className="text-[11px] text-zinc-400 mt-0.5">
@@ -62,9 +62,9 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
         <div className="tactical-card p-4 rounded-xl flex flex-col min-h-[260px]">
           <div className="flex items-center justify-between text-xs font-mono-hud text-zinc-300 mb-2">
             <span className="flex items-center gap-1.5 font-bold">
-              <TrendingUp className="w-4 h-4 text-amber-400" /> ALTITUDE PROFILE (METERS AGL)
+              <TrendingUp className="w-4 h-4 text-teal-400" /> ALTITUDE PROFILE (METERS AGL)
             </span>
-            <span className="text-amber-400 font-bold">
+            <span className="text-teal-400 font-bold">
               CURRENT: {telemetry?.gps.altitude_agl_m.toFixed(0) || 145}m
             </span>
           </div>
@@ -74,17 +74,17 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
               <AreaChart data={history}>
                 <defs>
                   <linearGradient id="altGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.38} />
-                    <stop offset="95%" stopColor="#F59E0B" stopOpacity={0.0} />
+                    <stop offset="5%" stopColor="#14B8A6" stopOpacity={0.38} />
+                    <stop offset="95%" stopColor="#14B8A6" stopOpacity={0.0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="#242833" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1E2B24" />
                 <XAxis dataKey="time" stroke="#71717A" tick={{ fontSize: 10 }} />
                 <YAxis stroke="#71717A" domain={['auto', 'auto']} tick={{ fontSize: 10 }} unit="m" />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#13151B', borderColor: '#242833', fontSize: '11px', fontFamily: 'monospace' }}
+                  contentStyle={{ backgroundColor: '#111814', borderColor: '#1E2B24', fontSize: '11px', fontFamily: 'monospace' }}
                 />
-                <Area type="monotone" dataKey="altitude" stroke="#F59E0B" strokeWidth={2} fillOpacity={1} fill="url(#altGrad)" name="Altitude AGL" />
+                <Area type="monotone" dataKey="altitude" stroke="#14B8A6" strokeWidth={2} fillOpacity={1} fill="url(#altGrad)" name="Altitude AGL" />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -94,7 +94,7 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
         <div className="tactical-card p-4 rounded-xl flex flex-col min-h-[260px]">
           <div className="flex items-center justify-between text-xs font-mono-hud text-zinc-300 mb-2">
             <span className="flex items-center gap-1.5 font-bold">
-              <Activity className="w-4 h-4 text-emerald-400" /> GROUND SPEED (KM/H) & BATTERY (%)
+              <Activity className="w-4 h-4 text-orange-400" /> GROUND SPEED (KM/H) & BATTERY (%)
             </span>
             <span className="text-emerald-400 font-bold">
               BAT: {telemetry?.battery.percentage.toFixed(0) || 78}%
@@ -104,14 +104,14 @@ export const AnalyticsView: React.FC<AnalyticsViewProps> = ({ history, telemetry
           <div className="flex-1 w-full min-h-[190px]">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart data={history}>
-                <CartesianGrid strokeDasharray="3 3" stroke="#242833" />
+                <CartesianGrid strokeDasharray="3 3" stroke="#1E2B24" />
                 <XAxis dataKey="time" stroke="#71717A" tick={{ fontSize: 10 }} />
                 <YAxis stroke="#71717A" domain={[0, 100]} tick={{ fontSize: 10 }} />
                 <Tooltip
-                  contentStyle={{ backgroundColor: '#13151B', borderColor: '#242833', fontSize: '11px', fontFamily: 'monospace' }}
+                  contentStyle={{ backgroundColor: '#111814', borderColor: '#1E2B24', fontSize: '11px', fontFamily: 'monospace' }}
                 />
-                <Line type="monotone" dataKey="speed" stroke="#F59E0B" strokeWidth={2} dot={false} name="Speed (km/h)" />
-                <Line type="monotone" dataKey="battery" stroke="#22C55E" strokeWidth={2} dot={false} name="Battery (%)" />
+                <Line type="monotone" dataKey="speed" stroke="#F97316" strokeWidth={2} dot={false} name="Speed (km/h)" />
+                <Line type="monotone" dataKey="battery" stroke="#10B981" strokeWidth={2} dot={false} name="Battery (%)" />
               </LineChart>
             </ResponsiveContainer>
           </div>

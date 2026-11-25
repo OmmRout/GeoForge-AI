@@ -10,8 +10,8 @@ const createDroneIcon = (heading: number) => {
     className: 'custom-drone-icon',
     html: `
       <div style="transform: rotate(${heading}deg); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; position: relative;">
-        <div style="position: absolute; width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(245, 158, 11, 0.45); animation: pulse-radar 2s infinite;"></div>
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="#F59E0B" stroke="#0B0C10" stroke-width="1.5">
+        <div style="position: absolute; width: 36px; height: 36px; border-radius: 50%; border: 2px solid rgba(249, 115, 22, 0.5); animation: pulse-radar 2s infinite;"></div>
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="#F97316" stroke="#090D0B" stroke-width="1.5">
           <polygon points="12 2 19 21 12 17 5 21 12 2"/>
         </svg>
       </div>
@@ -22,7 +22,7 @@ const createDroneIcon = (heading: number) => {
 };
 
 const createTargetIcon = (_category: string, threat: string) => {
-  const color = threat === 'CRITICAL' ? '#EF4444' : threat === 'HIGH' ? '#F59E0B' : '#22C55E';
+  const color = threat === 'CRITICAL' ? '#EF4444' : threat === 'HIGH' ? '#F97316' : '#14B8A6';
   return L.divIcon({
     className: 'custom-target-icon',
     html: `
@@ -36,11 +36,11 @@ const createTargetIcon = (_category: string, threat: string) => {
 };
 
 const createWaypointIcon = (id: number, reached: boolean) => {
-  const bg = reached ? '#22C55E' : '#A1A1AA';
+  const bg = reached ? '#10B981' : '#14B8A6';
   return L.divIcon({
     className: 'custom-wp-icon',
     html: `
-      <div style="width: 20px; height: 20px; border-radius: 4px; background: #13151B; border: 1.5px solid ${bg}; color: ${bg}; font-family: monospace; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center;">
+      <div style="width: 20px; height: 20px; border-radius: 4px; background: #111814; border: 1.5px solid ${bg}; color: ${bg}; font-family: monospace; font-size: 10px; font-weight: bold; display: flex; align-items: center; justify-content: center;">
         ${id}
       </div>
     `,
@@ -131,9 +131,9 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
   return (
     <div className="tactical-card rounded-xl flex flex-col h-full overflow-hidden relative min-h-[300px]">
       {/* Map Header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-[#13151B] border-b border-[#242833] text-xs z-10">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#111814] border-b border-[#1E2B24] text-xs z-10">
         <div className="flex items-center gap-2">
-          <Crosshair className="w-4 h-4 text-amber-400" />
+          <Crosshair className="w-4 h-4 text-teal-400" />
           <span className="font-mono-hud font-semibold text-zinc-200">TACTICAL GPS GEO-MAP</span>
           <span className="text-[10px] font-mono-hud text-zinc-400 hidden sm:inline">
             ROHTANG CORRIDOR (HIMALAYAS)
@@ -144,17 +144,17 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
         <div className="flex items-center gap-2">
           <button
             onClick={cycleLayer}
-            className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono-hud bg-zinc-800/90 hover:bg-zinc-700 text-amber-300 border border-[#242833] cursor-pointer transition shadow-sm"
+            className="flex items-center gap-1 px-2.5 py-1 rounded text-[11px] font-mono-hud bg-[#090D0B] hover:bg-[#19231D] text-teal-300 border border-[#1E2B24] cursor-pointer transition shadow-sm"
             title="Cycle between Satellite, Topo, and OpenStreetMap"
           >
-            <Layers className="w-3 h-3 text-amber-400" />
+            <Layers className="w-3 h-3 text-teal-400" />
             <span className="capitalize">{mapLayer === 'satellite' ? '🛰️ Satellite' : mapLayer === 'topo' ? '🏔️ Topo Terrain' : '🗺️ OpenStreetMap'}</span>
           </button>
 
           <button
             onClick={() => setAutoCenter(!autoCenter)}
             className={`px-2 py-1 rounded text-[11px] font-mono-hud transition cursor-pointer ${
-              autoCenter ? 'bg-amber-500/15 text-amber-300 border border-amber-500/40' : 'bg-zinc-800 text-zinc-400'
+              autoCenter ? 'bg-teal-500/15 text-teal-300 border border-teal-500/40' : 'bg-[#090D0B] text-zinc-400 border border-[#1E2B24]'
             }`}
           >
             Auto-Follow: {autoCenter ? 'ON' : 'OFF'}
@@ -182,10 +182,10 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
           <Polygon
             positions={geofencePolygon}
             pathOptions={{
-              color: '#F59E0B',
+              color: '#14B8A6',
               weight: 1.5,
               dashArray: '6, 6',
-              fillColor: '#F59E0B',
+              fillColor: '#14B8A6',
               fillOpacity: 0.05
             }}
           />
@@ -194,10 +194,10 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
           <Polyline
             positions={wpCoords}
             pathOptions={{
-              color: '#FBBF24',
+              color: '#10B981',
               weight: 2,
               dashArray: '4, 4',
-              opacity: 0.65
+              opacity: 0.7
             }}
           />
 
@@ -205,7 +205,7 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
           <Polyline
             positions={trail}
             pathOptions={{
-              color: '#F59E0B',
+              color: '#F97316',
               weight: 3,
               opacity: 0.95
             }}
@@ -266,18 +266,18 @@ export const TacticalMap: React.FC<TacticalMapProps> = ({ telemetry, detections 
         </MapContainer>
 
         {/* Tactical Legend Box */}
-        <div className="absolute bottom-2 left-2 bg-[#0B0C10]/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-[#242833] text-[10px] font-mono-hud text-zinc-300 z-[1000] space-y-1">
+        <div className="absolute bottom-2 left-2 bg-[#090D0B]/90 backdrop-blur-md px-2.5 py-1.5 rounded-lg border border-[#1E2B24] text-[10px] font-mono-hud text-zinc-300 z-[1000] space-y-1">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
-            <span>Drone / Live Flight Trail</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+            <span>Rescue Drone / Live Trail</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-red-500"></span>
             <span>Critical Target (SAR / Fire)</span>
           </div>
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-            <span>Waypoint / Nominal</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
+            <span>Waypoints & Geofence</span>
           </div>
         </div>
       </div>

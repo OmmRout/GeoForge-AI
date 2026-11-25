@@ -25,24 +25,24 @@ export const VideoFeed: React.FC<VideoFeedProps> = ({ detections, onSelectTarget
   return (
     <div className="tactical-card rounded-xl flex flex-col h-full overflow-hidden relative">
       {/* Feed Header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-[#13151B] border-b border-[#242833] text-xs">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#111814] border-b border-[#1E2B24] text-xs">
         <div className="flex items-center gap-2">
           <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
           </span>
           <span className="font-mono-hud font-semibold text-zinc-200">GIMBAL CAM #1 [STREAM]</span>
-          <span className="text-[10px] font-mono-hud text-amber-400 bg-amber-500/10 px-1.5 py-0.5 rounded border border-amber-500/30">
+          <span className="text-[10px] font-mono-hud text-teal-300 bg-teal-500/10 px-1.5 py-0.5 rounded border border-teal-500/30">
             YOLOv8s REALTIME
           </span>
         </div>
 
         {/* View Mode Switcher */}
-        <div className="flex items-center gap-1 bg-[#0B0C10] p-0.5 rounded-lg border border-[#242833] text-[11px] font-mono-hud">
+        <div className="flex items-center gap-1 bg-[#090D0B] p-0.5 rounded-lg border border-[#1E2B24] text-[11px] font-mono-hud">
           <button
             onClick={() => setViewMode('rgb')}
             className={`flex items-center gap-1 px-2 py-1 rounded transition cursor-pointer ${
-              viewMode === 'rgb' ? 'bg-amber-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-zinc-200'
+              viewMode === 'rgb' ? 'bg-teal-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-zinc-200'
             }`}
           >
             <Eye className="w-3 h-3" />
@@ -94,10 +94,10 @@ export const VideoFeed: React.FC<VideoFeedProps> = ({ detections, onSelectTarget
           const borderColor = isCritical
             ? 'border-red-500 shadow-sm shadow-red-500/50'
             : isHigh
-            ? 'border-amber-400 shadow-sm shadow-amber-400/50'
-            : 'border-emerald-400';
+            ? 'border-orange-400 shadow-sm shadow-orange-400/50'
+            : 'border-teal-400';
 
-          const badgeBg = isCritical ? 'bg-red-600' : isHigh ? 'bg-amber-600' : 'bg-emerald-600';
+          const badgeBg = isCritical ? 'bg-red-600' : isHigh ? 'bg-orange-600' : 'bg-teal-600';
 
           return (
             <div
@@ -125,21 +125,21 @@ export const VideoFeed: React.FC<VideoFeedProps> = ({ detections, onSelectTarget
         })}
 
         {/* Telemetry Corner Readout HUD */}
-        <div className="absolute top-2 left-2 pointer-events-none text-[10px] font-mono-hud text-amber-300 bg-[#0B0C10]/85 px-2 py-1 rounded border border-[#242833] backdrop-blur-sm z-10">
+        <div className="absolute top-2 left-2 pointer-events-none text-[10px] font-mono-hud text-teal-300 bg-[#090D0B]/85 px-2 py-1 rounded border border-[#1E2B24] backdrop-blur-sm z-10">
           <div>FOV: 84° WIDE-ANGLE</div>
           <div>STAB: 3-AXIS GIMBAL LOCK</div>
         </div>
 
-        <div className="absolute top-2 right-2 pointer-events-none text-[10px] font-mono-hud text-zinc-300 bg-[#0B0C10]/85 px-2 py-1 rounded border border-[#242833] backdrop-blur-sm z-10 flex items-center gap-1.5">
+        <div className="absolute top-2 right-2 pointer-events-none text-[10px] font-mono-hud text-zinc-300 bg-[#090D0B]/85 px-2 py-1 rounded border border-[#1E2B24] backdrop-blur-sm z-10 flex items-center gap-1.5">
           <Activity className="w-3 h-3 text-emerald-400 animate-pulse" />
           <span>INFERENCE: 28.5 FPS</span>
         </div>
 
         {/* Selected Target Drawer */}
         {selectedTarget && (
-          <div className="absolute bottom-2 left-2 right-2 bg-[#13151B]/95 border border-amber-500/50 rounded-lg p-2.5 z-30 backdrop-blur-md flex items-center justify-between shadow-xl animate-in fade-in">
+          <div className="absolute bottom-2 left-2 right-2 bg-[#111814]/95 border border-teal-500/50 rounded-lg p-2.5 z-30 backdrop-blur-md flex items-center justify-between shadow-xl animate-in fade-in">
             <div className="flex items-center gap-2">
-              <div className="p-1.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-400">
+              <div className="p-1.5 rounded bg-teal-500/15 border border-teal-500/40 text-teal-400">
                 <Crosshair className="w-4 h-4" />
               </div>
               <div>
@@ -157,7 +157,7 @@ export const VideoFeed: React.FC<VideoFeedProps> = ({ detections, onSelectTarget
 
             <button
               onClick={() => setSelectedTarget(null)}
-              className="px-2 py-1 text-[11px] font-mono-hud bg-zinc-800 hover:bg-zinc-700 text-zinc-300 rounded border border-zinc-700 transition cursor-pointer"
+              className="px-2 py-1 text-[11px] font-mono-hud bg-[#090D0B] hover:bg-[#19231D] text-zinc-300 rounded border border-[#1E2B24] transition cursor-pointer"
             >
               Dismiss
             </button>
@@ -166,18 +166,18 @@ export const VideoFeed: React.FC<VideoFeedProps> = ({ detections, onSelectTarget
       </div>
 
       {/* Feed Bottom Controls Bar */}
-      <div className="flex items-center justify-between px-3 py-1.5 bg-[#13151B] border-t border-[#242833] text-xs">
+      <div className="flex items-center justify-between px-3 py-1.5 bg-[#111814] border-t border-[#1E2B24] text-xs">
         <div className="flex items-center gap-2 text-zinc-400 text-[11px] font-mono-hud">
-          <span>TARGETS: <strong className="text-amber-300">{detections?.total_detected || 0}</strong></span>
+          <span>TARGETS: <strong className="text-teal-300">{detections?.total_detected || 0}</strong></span>
           <span>•</span>
-          <span className="text-red-400">CRITICAL: {detections?.critical_hazards || 0}</span>
+          <span className="text-orange-400">CRITICAL: {detections?.critical_hazards || 0}</span>
         </div>
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => setShowOverlays(!showOverlays)}
             className={`px-2 py-1 text-[11px] font-mono-hud rounded transition cursor-pointer ${
-              showOverlays ? 'bg-amber-500/15 text-amber-300 border border-amber-500/40' : 'bg-zinc-800 text-zinc-400'
+              showOverlays ? 'bg-teal-500/15 text-teal-300 border border-teal-500/40' : 'bg-[#090D0B] text-zinc-400 border border-[#1E2B24]'
             }`}
           >
             {showOverlays ? 'AI Overlay: ON' : 'AI Overlay: OFF'}

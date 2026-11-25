@@ -34,7 +34,7 @@ export function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0B0C10] text-zinc-100 flex flex-col pb-16 md:pb-6 font-sans">
+    <div className="min-h-screen bg-[#090D0B] text-zinc-100 flex flex-col pb-16 md:pb-6 font-sans">
       {/* Top Tactical Command Header */}
       <Header
         telemetry={telemetry}
