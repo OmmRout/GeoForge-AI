@@ -25,10 +25,10 @@ export function getThreatBadgeClass(level: ThreatSeverity | string): string {
     case 'MEDIUM':
       return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/40 border';
     case 'LOW':
-      return 'bg-cyan-500/20 text-cyan-400 border-cyan-500/40 border';
+      return 'bg-zinc-700/40 text-zinc-300 border-zinc-600/50 border';
     case 'NOMINAL':
     default:
-      return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40 border';
+      return 'bg-emerald-500/15 text-emerald-400 border-emerald-500/40 border';
   }
 }
 

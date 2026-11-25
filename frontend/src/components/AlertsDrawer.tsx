@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { 
-  X, ShieldAlert, CheckCircle, BellRing, Filter, 
-  MapPin, AlertTriangle, ArrowRight, CheckCheck 
+import {
+  X, ShieldAlert, CheckCircle, MapPin, CheckCheck
 } from 'lucide-react';
 import { TerrainAlert } from '../types';
 import { formatTimeAgo, formatCoords, getThreatBadgeClass } from '../utils/formatters';
@@ -32,35 +31,35 @@ export const AlertsDrawer: React.FC<AlertsDrawerProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm animate-in fade-in">
-      <div className="w-full max-w-md h-full tactical-card bg-[#0A0F1D] border-l border-slate-800 shadow-2xl flex flex-col">
+      <div className="w-full max-w-md h-full tactical-card bg-[#0B0C10] border-l border-[#242833] shadow-2xl flex flex-col">
         {/* Drawer Header */}
-        <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
+        <div className="flex items-center justify-between px-4 py-3 bg-[#13151B] border-b border-[#242833]">
           <div className="flex items-center gap-2">
             <ShieldAlert className="w-5 h-5 text-amber-400" />
-            <h2 className="text-sm font-bold text-slate-100 font-mono-hud">TERRAIN THREAT ALERTS</h2>
-            <span className="text-xs px-2 py-0.5 rounded-full bg-slate-800 text-cyan-300 font-mono-hud">
+            <h2 className="text-sm font-bold text-zinc-100 font-mono-hud">TERRAIN THREAT ALERTS</h2>
+            <span className="text-xs px-2 py-0.5 rounded-full bg-zinc-800 text-amber-300 font-mono-hud">
               {alerts.length}
             </span>
           </div>
 
           <button
             onClick={onClose}
-            className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white transition cursor-pointer"
+            className="p-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-white transition cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
         </div>
 
         {/* Filter Pills */}
-        <div className="flex items-center gap-1.5 p-3 border-b border-slate-800 bg-slate-950/60 text-xs font-mono-hud">
+        <div className="flex items-center gap-1.5 p-3 border-b border-[#242833] bg-[#0E1015] text-xs font-mono-hud">
           {['ALL', 'CRITICAL', 'WARNING', 'INFO'].map(lvl => (
             <button
               key={lvl}
               onClick={() => setFilterLevel(lvl)}
               className={`px-2.5 py-1 rounded-md transition cursor-pointer ${
                 filterLevel === lvl
-                  ? 'bg-cyan-600 text-white font-bold'
-                  : 'bg-slate-900 text-slate-400 hover:text-slate-200'
+                  ? 'bg-amber-500 text-zinc-950 font-bold'
+                  : 'bg-[#13151B] text-zinc-400 hover:text-zinc-200 border border-[#242833]'
               }`}
             >
               {lvl}
@@ -71,7 +70,7 @@ export const AlertsDrawer: React.FC<AlertsDrawerProps> = ({
         {/* Alerts List */}
         <div className="flex-1 overflow-y-auto p-3 space-y-3">
           {filteredAlerts.length === 0 ? (
-            <div className="text-center text-slate-500 text-xs py-12">
+            <div className="text-center text-zinc-500 text-xs py-12">
               No alerts matching the selected filter.
             </div>
           ) : (
@@ -82,47 +81,46 @@ export const AlertsDrawer: React.FC<AlertsDrawerProps> = ({
                   key={alert.id}
                   className={`p-3 rounded-xl border transition ${
                     isActive
-                      ? 'bg-slate-900/90 border-slate-700 shadow-md'
-                      : 'bg-slate-950/40 border-slate-800/60 opacity-60'
+                      ? 'bg-[#13151B] border-[#242833] shadow-md'
+                      : 'bg-[#0E1015]/60 border-[#242833]/60 opacity-60'
                   }`}
                 >
                   <div className="flex items-center justify-between text-[11px] font-mono-hud mb-1">
                     <span className={`px-2 py-0.5 rounded text-[10px] font-bold ${getThreatBadgeClass(alert.level)}`}>
                       {alert.level}
                     </span>
-                    <span className="text-slate-400">{formatTimeAgo(alert.timestamp)}</span>
+                    <span className="text-zinc-400">{formatTimeAgo(alert.timestamp)}</span>
                   </div>
 
-                  <h4 className="text-xs font-bold text-slate-100 mt-1">{alert.title}</h4>
-                  <p className="text-[11px] text-slate-300 mt-1 leading-relaxed">
+                  <h4 className="text-xs font-bold text-zinc-100 mt-1">{alert.title}</h4>
+                  <p className="text-[11px] text-zinc-300 mt-1 leading-relaxed">
                     {alert.description}
                   </p>
 
-                  <div className="flex items-center gap-1 text-[10px] font-mono-hud text-cyan-400/90 mt-2">
+                  <div className="flex items-center gap-1 text-[10px] font-mono-hud text-amber-400/90 mt-2">
                     <MapPin className="w-3 h-3" />
                     <span>{formatCoords(alert.gps_lat, alert.gps_lon)}</span>
                   </div>
 
                   {alert.action_suggested && (
-                    <div className="mt-2 p-2 rounded bg-slate-950 border border-slate-800 text-[11px] font-mono-hud text-amber-300/90">
+                    <div className="mt-2 p-2 rounded bg-[#0B0C10] border border-[#242833] text-[11px] font-mono-hud text-amber-300/90">
                       Recommendation: {alert.action_suggested}
                     </div>
                   )}
 
-                  {/* Actions Bar */}
                   {isActive && (
-                    <div className="flex items-center gap-2 mt-3 pt-2 border-t border-slate-800/80">
+                    <div className="flex items-center gap-2 mt-3 pt-2 border-t border-[#242833]">
                       <button
                         onClick={() => onAcknowledge(alert.id)}
-                        className="flex-1 py-1 px-2 text-[11px] font-mono-hud font-semibold rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition cursor-pointer flex items-center justify-center gap-1"
+                        className="flex-1 py-1 px-2 text-[11px] font-mono-hud font-semibold rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 transition cursor-pointer flex items-center justify-center gap-1"
                       >
-                        <CheckCircle className="w-3 h-3 text-cyan-400" />
+                        <CheckCircle className="w-3 h-3 text-amber-400" />
                         <span>Acknowledge</span>
                       </button>
 
                       <button
                         onClick={() => onResolve(alert.id)}
-                        className="flex-1 py-1 px-2 text-[11px] font-mono-hud font-semibold rounded bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 border border-emerald-500/40 transition cursor-pointer flex items-center justify-center gap-1"
+                        className="flex-1 py-1 px-2 text-[11px] font-mono-hud font-semibold rounded bg-emerald-600/25 hover:bg-emerald-600/40 text-emerald-300 border border-emerald-500/40 transition cursor-pointer flex items-center justify-center gap-1"
                       >
                         <CheckCheck className="w-3 h-3 text-emerald-400" />
                         <span>Resolve</span>

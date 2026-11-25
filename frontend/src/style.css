@@ -3,8 +3,8 @@
 @layer base {
   body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background-color: #080C14;
-    color: #F1F5F9;
+    background-color: #0B0C10;
+    color: #F4F4F5;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
   }
@@ -13,26 +13,26 @@
   .font-mono-hud {
     font-family: 'JetBrains Mono', monospace;
   }
-  
+
   .font-tactical {
     font-family: 'Chakra Petch', sans-serif;
   }
 }
 
-/* Custom Tactical Scrollbars */
+/* Custom Stealth Aerospace Scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(19, 21, 27, 0.8);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(51, 65, 85, 0.8);
+  background: rgba(63, 63, 70, 0.8);
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(6, 182, 212, 0.6);
+  background: rgba(245, 158, 11, 0.6);
 }
 
 /* Smooth pulse animation for live radar & drone beacon */
@@ -46,22 +46,22 @@
   animation: pulse-radar 2.4s infinite cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
-/* Glassmorphism panel styling */
+/* Stealth Matte Graphite Panel Styling */
 .tactical-card {
-  background: rgba(15, 23, 42, 0.75);
+  background: rgba(19, 21, 27, 0.88);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(51, 65, 85, 0.5);
-  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+  border: 1px solid #242833;
+  box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.55);
 }
 
 .tactical-card-glow {
-  border-color: rgba(6, 182, 212, 0.4);
-  box-shadow: 0 0 15px -3px rgba(6, 182, 212, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  box-shadow: 0 0 15px -3px rgba(245, 158, 11, 0.12);
 }
 
-/* Leaflet map custom styling for tactical dark theme */
+/* Leaflet map custom styling for stealth aerospace theme */
 .leaflet-container {
-  background-color: #0B1120 !important;
+  background-color: #0B0C10 !important;
   font-family: inherit;
   width: 100%;
   height: 100%;
@@ -69,22 +69,22 @@
 }
 
 .leaflet-tile {
-  filter: brightness(0.88) contrast(1.15);
+  filter: brightness(0.88) contrast(1.12);
 }
 
 .leaflet-control-zoom {
-  border: 1px solid rgba(51, 65, 85, 0.6) !important;
+  border: 1px solid #242833 !important;
   border-radius: 6px !important;
   overflow: hidden;
 }
 
 .leaflet-control-zoom a {
-  background-color: rgba(15, 23, 42, 0.9) !important;
-  color: #38BDF8 !important;
-  border-bottom: 1px solid rgba(51, 65, 85, 0.6) !important;
+  background-color: rgba(19, 21, 27, 0.92) !important;
+  color: #F59E0B !important;
+  border-bottom: 1px solid #242833 !important;
 }
 
 .leaflet-control-zoom a:hover {
-  background-color: #0369A1 !important;
-  color: #FFFFFF !important;
+  background-color: #D97706 !important;
+  color: #0B0C10 !important;
 }

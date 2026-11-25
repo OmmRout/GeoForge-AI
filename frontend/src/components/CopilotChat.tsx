@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Bot, Send, User, Sparkles, Terminal, CornerDownLeft, Loader2 } from 'lucide-react';
+import { Bot, Send, User, Sparkles, Terminal, Loader2 } from 'lucide-react';
 import { playTacticalBeep } from '../utils/formatters';
 
 interface Message {
@@ -81,7 +81,7 @@ export const CopilotChat: React.FC<CopilotChatProps> = ({ droneId, onExecuteSugg
       } else {
         throw new Error('Chat API returned error');
       }
-    } catch (e) {
+    } catch {
       const errorMsg: Message = {
         id: `err-${Date.now()}`,
         sender: 'agent',
@@ -102,57 +102,55 @@ export const CopilotChat: React.FC<CopilotChatProps> = ({ droneId, onExecuteSugg
   ];
 
   return (
-    <div className="tactical-card rounded-xl border border-slate-800 flex flex-col h-full overflow-hidden">
+    <div className="tactical-card rounded-xl flex flex-col h-full overflow-hidden">
       {/* Header */}
-      <div className="flex items-center justify-between px-3 py-2 bg-slate-900/90 border-b border-slate-800 text-xs">
+      <div className="flex items-center justify-between px-3 py-2 bg-[#13151B] border-b border-[#242833] text-xs">
         <div className="flex items-center gap-2">
-          <Bot className="w-4 h-4 text-cyan-400" />
-          <span className="font-mono-hud font-semibold text-slate-100">TACTICAL AI MISSION CO-PILOT</span>
+          <Bot className="w-4 h-4 text-amber-400" />
+          <span className="font-mono-hud font-semibold text-zinc-100">TACTICAL AI MISSION CO-PILOT</span>
         </div>
-        <span className="text-[10px] font-mono-hud text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/60 flex items-center gap-1">
+        <span className="text-[10px] font-mono-hud text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/30 flex items-center gap-1">
           <Sparkles className="w-2.5 h-2.5" /> AGENT ONLINE
         </span>
       </div>
 
       {/* Messages Scroll Area */}
-      <div className="flex-1 overflow-y-auto p-3 space-y-3 min-h-[200px] max-h-[380px]">
+      <div className="flex-1 overflow-y-auto p-3 space-y-3 min-h-[200px] max-h-[380px] bg-[#0B0C10]/40">
         {messages.map((m) => (
           <div
             key={m.id}
             className={`flex flex-col ${m.sender === 'pilot' ? 'items-end' : 'items-start'}`}
           >
-            <div className="flex items-center gap-1.5 text-[10px] font-mono-hud text-slate-400 mb-0.5 px-1">
+            <div className="flex items-center gap-1.5 text-[10px] font-mono-hud text-zinc-400 mb-0.5 px-1">
               {m.sender === 'pilot' ? (
-                <><span>PILOT OPERATOR</span><User className="w-2.5 h-2.5 text-cyan-400" /></>
+                <><span>PILOT OPERATOR</span><User className="w-2.5 h-2.5 text-amber-400" /></>
               ) : (
-                <><Bot className="w-2.5 h-2.5 text-cyan-400" /><span>GEOFORGE AI</span></>
+                <><Bot className="w-2.5 h-2.5 text-amber-400" /><span>GEOFORGE AI</span></>
               )}
             </div>
 
             <div
               className={`max-w-[88%] rounded-xl p-3 text-xs leading-relaxed shadow-sm ${
                 m.sender === 'pilot'
-                  ? 'bg-cyan-600 text-white rounded-tr-none'
-                  : 'bg-slate-900 border border-slate-800 text-slate-200 rounded-tl-none'
+                  ? 'bg-amber-500 text-zinc-950 font-medium rounded-tr-none'
+                  : 'bg-[#13151B] border border-[#242833] text-zinc-200 rounded-tl-none'
               }`}
             >
               <div>{m.text}</div>
 
-              {/* Step-by-step reasoning trail if from agent */}
               {m.reasoningTrail && m.reasoningTrail.length > 0 && (
-                <div className="mt-2 pt-2 border-t border-slate-800/80 text-[10px] font-mono-hud text-cyan-300/80 space-y-0.5">
-                  <div className="font-bold flex items-center gap-1 text-slate-400">
+                <div className="mt-2 pt-2 border-t border-[#242833] text-[10px] font-mono-hud text-amber-300/85 space-y-0.5">
+                  <div className="font-bold flex items-center gap-1 text-zinc-400">
                     <Terminal className="w-2.5 h-2.5" /> REASONING TRACE:
                   </div>
                   {m.reasoningTrail.map((trace, idx) => (
-                    <div key={idx} className="pl-2 border-l border-cyan-800/60">
+                    <div key={idx} className="pl-2 border-l border-amber-500/40">
                       • {trace}
                     </div>
                   ))}
                 </div>
               )}
 
-              {/* Action Button if suggested by AI */}
               {m.suggestedAction && onExecuteSuggestedAction && (
                 <button
                   onClick={() => onExecuteSuggestedAction(m.suggestedAction!)}
@@ -166,7 +164,7 @@ export const CopilotChat: React.FC<CopilotChatProps> = ({ droneId, onExecuteSugg
         ))}
 
         {loading && (
-          <div className="flex items-center gap-2 text-xs font-mono-hud text-cyan-400 bg-slate-900/60 p-2 rounded-lg border border-slate-800 w-fit">
+          <div className="flex items-center gap-2 text-xs font-mono-hud text-amber-400 bg-[#13151B] p-2 rounded-lg border border-[#242833] w-fit">
             <Loader2 className="w-3.5 h-3.5 animate-spin" />
             <span>Agent synthesizing terrain and telemetry decision...</span>
           </div>
@@ -175,12 +173,12 @@ export const CopilotChat: React.FC<CopilotChatProps> = ({ droneId, onExecuteSugg
       </div>
 
       {/* Quick Chips Prompts */}
-      <div className="px-3 py-1.5 bg-slate-950/60 border-t border-slate-800/60 flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono-hud">
+      <div className="px-3 py-1.5 bg-[#0E1015] border-t border-[#242833] flex items-center gap-1.5 overflow-x-auto text-[11px] font-mono-hud">
         {quickPrompts.map((q, idx) => (
           <button
             key={idx}
             onClick={() => sendMessage(q)}
-            className="px-2 py-0.5 rounded-full bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-cyan-300 border border-slate-700 transition cursor-pointer whitespace-nowrap"
+            className="px-2 py-0.5 rounded-full bg-[#13151B] hover:bg-zinc-800 text-zinc-300 hover:text-amber-300 border border-[#242833] transition cursor-pointer whitespace-nowrap"
           >
             {q}
           </button>
@@ -193,19 +191,19 @@ export const CopilotChat: React.FC<CopilotChatProps> = ({ droneId, onExecuteSugg
           e.preventDefault();
           sendMessage(input);
         }}
-        className="p-2 bg-slate-900 border-t border-slate-800 flex items-center gap-2"
+        className="p-2 bg-[#13151B] border-t border-[#242833] flex items-center gap-2"
       >
         <input
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
           placeholder="Issue directive or query AI Co-pilot..."
-          className="flex-1 bg-slate-950 text-slate-100 placeholder-slate-500 text-xs px-3 py-2 rounded-lg border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono-hud"
+          className="flex-1 bg-[#0B0C10] text-zinc-100 placeholder-zinc-500 text-xs px-3 py-2 rounded-lg border border-[#242833] focus:outline-none focus:border-amber-500 font-mono-hud"
         />
         <button
           type="submit"
           disabled={!input.trim() || loading}
-          className="p-2 rounded-lg bg-cyan-600 hover:bg-cyan-500 disabled:opacity-40 text-white transition cursor-pointer"
+          className="p-2 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:opacity-40 text-zinc-950 transition cursor-pointer"
         >
           <Send className="w-3.5 h-3.5" />
         </button>
