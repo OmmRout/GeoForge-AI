@@ -29,39 +29,39 @@ class AgenticDecisionEngine:
                 timestamp=now - 120,
                 drone_id="GF-FALCON-01",
                 action_type=AgentDecisionType.HAZARD_AVOIDANCE,
-                headline="Active Landslide Fissure Detected on Ridge Slopes",
-                summary="Computer Vision YOLOv8 Node detected slope instability with displacement fracture. Agent computed 74% likelihood of rockfall within 15 mins. Recommended 50m standoff distance.",
+                headline="Landslide Fissure on Ridge Slope",
+                summary="YOLOv8 detected a 340 m² slope fracture (74% rockfall risk). Drone rerouted +120m North for safe standoff.",
                 reasoning_steps=[
                     ReasoningStep(
                         step_number=1,
                         component="PerceptionNode",
-                        thought="Optical CV sensor identified high-contrast ground fracture matching known scree slope fault signatures.",
-                        evidence="Target TGT-904 (Confidence 0.91, Area: 340 sq meters)",
+                        thought="Detected high-contrast ground fracture matching scree slope fault signatures.",
+                        evidence="TGT-904 • 91% conf • 340 m²",
                         confidence=0.91
                     ),
                     ReasoningStep(
                         step_number=2,
                         component="TerrainRiskAssessor",
-                        thought="Terrain gradient exceeds 42 degrees. Micro-vibrations and recent precipitation elevate sudden slide risk.",
-                        evidence="Digital Elevation Model gradient: 44.2°, Soil saturation index: High",
+                        thought="44.2° slope gradient with high soil saturation elevates immediate slide risk.",
+                        evidence="DEM gradient 44.2° • Saturation: High",
                         confidence=0.88
                     ),
                     ReasoningStep(
                         step_number=3,
                         component="ActionPlanner",
-                        thought="Reroute waypoint WP-4 offset by +120m North to avoid potential dust plume and rockfall trajectory.",
-                        evidence="Simulated trajectory clears risk envelope by 85m margin.",
+                        thought="Offset WP-4 by +120m North to clear dust plume and rockfall path.",
+                        evidence="85m clearance margin verified",
                         confidence=0.95
                     ),
                     ReasoningStep(
                         step_number=4,
                         component="SafetyValidator",
-                        thought="Verified obstacle clearance. Altitude AGL remains within safe corridor (165m).",
-                        evidence="Barometric sensor cross-verified against GPS MSL.",
+                        thought="Confirmed obstacle clearance along adjusted corridor at 165m AGL.",
+                        evidence="Baro + GPS MSL cross-check OK",
                         confidence=0.99
                     )
                 ],
-                recommended_action="Execute +120m Northern offset waypoint corridor.",
+                recommended_action="Hold +120m Northern offset corridor",
                 risk_score=76.5,
                 auto_executed=True,
                 requires_pilot_ack=False
@@ -71,32 +71,32 @@ class AgenticDecisionEngine:
                 timestamp=now - 45,
                 drone_id="GF-FALCON-01",
                 action_type=AgentDecisionType.THERMAL_SCAN_LOCK,
-                headline="High-Confidence Stranded Hiker Identified in Ravine",
-                summary="Thermal and optical fusion localized human signature TGT-801. Agent initiated loiter orbit and activated emergency radio beacon relay.",
+                headline="Stranded Hiker Located in Ravine",
+                summary="Thermal + optical fusion locked onto human signature TGT-801. Initiated loiter orbit and SAR beacon relay.",
                 reasoning_steps=[
                     ReasoningStep(
                         step_number=1,
                         component="PerceptionNode",
-                        thought="Optical detector isolated human silhouette with fluorescent orange gear. Thermal differential: +14°C over ambient snow.",
-                        evidence="Target TGT-801, Confidence: 0.94, Coordinates: 32.3789° N, 77.2521° E",
+                        thought="Isolated human silhouette in high-vis gear with +14°C thermal contrast.",
+                        evidence="TGT-801 • 32.3789° N, 77.2521° E",
                         confidence=0.94
                     ),
                     ReasoningStep(
                         step_number=2,
                         component="RiskAssessor",
-                        thought="Ambient temperature is 3.2°C and dropping. Subject exhibits minimal movement; risk of hypothermia is critical.",
-                        evidence="Inactivity duration: > 6 minutes in open exposure",
+                        thought="3.2°C ambient temp with >6 min inactivity indicates critical hypothermia risk.",
+                        evidence="Temp 3.2°C • Stationary >6m",
                         confidence=0.92
                     ),
                     ReasoningStep(
                         step_number=3,
                         component="ActionPlanner",
-                        thought="Engage 360-degree orbital surveillance at 80m AGL. Transmit precise coordinates to State Disaster Response Base.",
-                        evidence="Flight endurance: 22 mins remaining, sufficient for 10-min orbit + RTL.",
+                        thought="Lock 360° orbit at 80m AGL and relay GPS coordinates to SAR Base.",
+                        evidence="22m battery left (10m orbit + RTL)",
                         confidence=0.96
                     )
                 ],
-                recommended_action="Transmit GPS lock to SAR Command & hold optical tracking orbit.",
+                recommended_action="Transmit GPS lock to SAR Command & hold orbit",
                 risk_score=89.0,
                 auto_executed=True,
                 requires_pilot_ack=True
